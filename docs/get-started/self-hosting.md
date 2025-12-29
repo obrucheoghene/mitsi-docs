@@ -1,0 +1,89 @@
+---
+title: Self-Hosting
+description: Description how to host mitsi
+---
+
+# Self-Hosting Mitsi (Docker Compose)
+
+Mitsi is designed to be self-hosted and deployed using Docker Compose. This is the recommended production setup, as it provides isolation, predictable resource usage, and easy upgrades.
+
+A Mitsi deployment consists of four core services:
+
+Signaling Service – session coordination and control
+
+Media Service – browser automation, media capture, and WebRTC handling
+
+Web Client – user-facing interface
+
+Redis – shared state and coordination
+
+### Docker Compose Configuration
+
+```yaml
+services:
+  signaling:
+    image: obrucheoghene/mitsi-signaling
+    pull_policy: always
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_SERVER_URL=redis://redis:6379
+    depends_on:
+      - redis
+    networks:
+      - mitsi-network
+    restart: unless-stopped
+
+  media:
+    image: obrucheoghene/mitsi-media
+    pull_policy: always
+    ports:
+      - "4000:4000"
+      - "2000-2100:2000-2100/udp"
+      - "50052:50052"
+    environment:
+      - REDIS_SERVER_URL=redis://redis:6379
+      - RTC_MIN_PORT=2000
+      - RTC_MAX_PORT=2100
+      - SERVER_ADDRESS=media
+      - ANNOUNCED_ADDRESS=****
+    depends_on:
+      - signaling
+      - redis
+    networks:
+      - mitsi-network
+    restart: unless-stopped
+
+  web:
+    image: obrucheoghene/mitsi-web
+    pull_policy: always
+    ports:
+      - "3500:80"
+    environment:
+      - VITE_REACT_APP_SIGNALING_SERVER=****
+      - VITE_REACT_APP_API_SERVER=****
+      - VITE_REACT_APP_API_KEY=****
+    depends_on:
+      - signaling
+    networks:
+      - mitsi-network
+    restart: unless-stopped
+
+  redis:
+    image: redis:8-alpine
+    container_name: mitsi-redis
+    ports:
+      - "6378:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - mitsi-network
+    restart: unless-stopped
+
+volumes:
+  redis-data:
+
+networks:
+  mitsi-network:
+    driver: bridge
+```
