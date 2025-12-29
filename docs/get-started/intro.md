@@ -1,6 +1,7 @@
 ---
 title: Introduction
 description: Introduction to Mitsi
+position: 1
 ---
 
 # Introduction to Mitsi
