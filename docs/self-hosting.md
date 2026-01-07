@@ -1,5 +1,5 @@
 ---
-title: Self-Hosting
+title: Self Hosting
 description: Description how to host mitsi
 sidebar_position: 2
 ---
