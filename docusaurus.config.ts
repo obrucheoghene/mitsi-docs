@@ -89,7 +89,7 @@ const config: Config = {
         },
         // { to: "/blog", label: "Blog", position: "left" },
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/softhon",
           label: "GitHub",
           position: "right",
         },
@@ -98,15 +98,15 @@ const config: Config = {
     footer: {
       style: "dark",
       links: [
-        {
-          title: "Docs",
-          items: [
-            {
-              label: "Tutorial",
-              to: "/docs/intro",
-            },
-          ],
-        },
+        // {
+        //   title: "Docs",
+        //   items: [
+        //     {
+        //       label: "Tutorial",
+        //       to: "/docs/intro",
+        //     },
+        //   ],
+        // },
         // {
         //   title: "Community",
         //   items: [
@@ -124,19 +124,19 @@ const config: Config = {
         //     },
         //   ],
         // },
-        {
-          title: "Links",
-          items: [
-            // {
-            //   label: "Blog",
-            //   to: "/blog",
-            // },
-            {
-              label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
-            },
-          ],
-        },
+        // {
+        //   title: "Links",
+        //   items: [
+        //     // {
+        //     //   label: "Blog",
+        //     //   to: "/blog",
+        //     // },
+        //     {
+        //       label: "GitHub",
+        //       href: "https://github.com/facebook/docusaurus",
+        //     },
+        //   ],
+        // },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Mitsi.`,
     },

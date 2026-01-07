@@ -1,7 +1,7 @@
 ---
 title: Self-Hosting
 description: Description how to host mitsi
-position: 3
+sidebar_position: 2
 ---
 
 # Self-Hosting Mitsi (Docker Compose)

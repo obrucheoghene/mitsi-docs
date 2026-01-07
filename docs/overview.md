@@ -1,7 +1,8 @@
 ---
 title: Introduction
 description: Introduction to Mitsi
-position: 1
+sidebar_position: 1
+slug: /
 ---
 
 # Introduction to Mitsi
